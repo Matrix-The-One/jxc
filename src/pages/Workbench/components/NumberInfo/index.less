@@ -1,0 +1,77 @@
+// @import '~antd/es/style/themes/default.less';
+
+.numberInfo {
+  .suffix {
+    margin-left: 4px;
+    font-size: 16px;
+    font-style: normal;
+    color: @text-color;
+  }
+
+  .numberInfoTitle {
+    margin-bottom: 16px;
+    font-size: @font-size-lg;
+    color: @text-color;
+    transition: all 0.3s;
+  }
+
+  .numberInfoSubTitle {
+    height: 22px;
+    overflow: hidden;
+    font-size: @font-size-base;
+    line-height: 22px;
+    color: @text-color-secondary;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    white-space: nowrap;
+  }
+
+  .numberInfoValue {
+    margin-top: 4px;
+    overflow: hidden;
+    font-size: 0;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    white-space: nowrap;
+
+    & > span {
+      display: inline-block;
+      height: 32px;
+      margin-right: 32px;
+      font-size: 24px;
+      line-height: 32px;
+      color: @heading-color;
+    }
+
+    .subTotal {
+      margin-right: 0;
+      font-size: @font-size-lg;
+      color: @text-color-secondary;
+      vertical-align: top;
+
+      .anticon {
+        margin-left: 4px;
+        font-size: 12px;
+        transform: scale(0.82);
+      }
+
+      :global {
+        .anticon-caret-up {
+          color: @red-6;
+        }
+
+        .anticon-caret-down {
+          color: @green-6;
+        }
+      }
+    }
+  }
+}
+
+.numberInfolight {
+  .numberInfoValue {
+    & > span {
+      color: @text-color;
+    }
+  }
+}
