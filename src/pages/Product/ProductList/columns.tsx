@@ -1,23 +1,37 @@
 import type { ProColumns } from '@ant-design/pro-components'
-import { BrandEnum, CategoryEnum, ColorEnum, SeasonEnum } from './constants'
-import type { IList, IOperationProps } from './interface'
+import Operation from './components/Operation'
+import {
+  BrandEnum,
+  CategoryEnum,
+  ColorEnum,
+  SeasonEnum,
+  SizeEnum,
+  StatusEnum,
+} from './constants'
+import type { IList } from './interface'
 import UserSearch from '@/components/UserSearch'
 import { dateRanges } from '@/constant/date'
 import { isMobile } from '@/utils/browser'
 
-export const generateColumns = (): Array<ProColumns<IList>> => [
+interface GenerateColumnsParams {
+  scene?: 'select'
+}
+
+export const generateColumns = ({
+  scene,
+}: GenerateColumnsParams): Array<ProColumns<IList>> => [
   {
     title: '厂商',
     dataIndex: 'manufacturer',
     fixed: 'left',
-    width: 120,
+    width: 100,
   },
   {
     title: '类别',
     dataIndex: 'category',
     valueType: 'select',
     valueEnum: CategoryEnum,
-    width: 120,
+    width: 80,
   },
   {
     title: '图',
@@ -30,7 +44,7 @@ export const generateColumns = (): Array<ProColumns<IList>> => [
     title: '是否有图',
     dataIndex: 'isPic',
     valueType: 'select',
-    valueEnum: { 1: '有', 0: '无' },
+    valueEnum: { true: '有', false: '无' },
     hideInTable: true,
     width: 80,
   },
@@ -38,7 +52,7 @@ export const generateColumns = (): Array<ProColumns<IList>> => [
     title: '款号',
     dataIndex: 'modelNo',
     hideInSearch: true,
-    width: 120,
+    width: 80,
   },
   {
     title: '名称',
@@ -47,32 +61,46 @@ export const generateColumns = (): Array<ProColumns<IList>> => [
     width: 160,
   },
   {
+    title: '状态',
+    dataIndex: 'status',
+    valueType: 'select',
+    valueEnum: StatusEnum,
+    width: 80,
+  },
+  {
     title: '进货价',
     dataIndex: 'purchasePrice',
     valueType: 'digit',
     hideInSearch: true,
-    width: 100,
+    width: 80,
   },
   {
     title: '零批价',
     dataIndex: 'retailPrice',
     valueType: 'digit',
     hideInSearch: true,
-    width: 100,
+    width: 80,
   },
   {
     title: '打包',
     dataIndex: 'packPrice',
     valueType: 'digit',
     hideInSearch: true,
-    width: 100,
+    width: 80,
   },
   {
     title: '颜色',
     dataIndex: 'color',
     valueType: 'select',
     valueEnum: ColorEnum,
-    width: 100,
+    width: 80,
+  },
+  {
+    title: '尺码',
+    dataIndex: 'size',
+    valueType: 'select',
+    valueEnum: SizeEnum,
+    width: 80,
   },
   {
     title: '经办人',
@@ -89,19 +117,11 @@ export const generateColumns = (): Array<ProColumns<IList>> => [
     width: 100,
   },
   {
-    title: '创建时间',
-    dataIndex: 'time',
-    valueType: 'dateRange',
-    hideInTable: true,
-    fieldProps: { ranges: dateRanges, inputReadOnly: isMobile() },
-    colSize: 2,
-  },
-  {
     title: '季节',
     dataIndex: 'season',
     valueType: 'select',
     valueEnum: SeasonEnum,
-    width: 100,
+    width: 80,
   },
   {
     title: '创建时间',
@@ -112,19 +132,20 @@ export const generateColumns = (): Array<ProColumns<IList>> => [
     width: 160,
   },
   {
+    title: '创建时间',
+    dataIndex: 'time',
+    valueType: 'dateRange',
+    hideInTable: true,
+    fieldProps: { ranges: dateRanges, inputReadOnly: isMobile() },
+    colSize: 2,
+  },
+  {
     title: '操作',
     fixed: 'right',
     hideInSearch: true,
-    width: 150,
-    // render: (_, record, __, action) => (
-    //   <Operation
-    //     record={record}
-    //     action={action}
-    //     socket={socket}
-    //     check={check}
-    //     addressesData={addressesData}
-    //     roleSelectData={roleSelectData}
-    //   />
-    // ),
+    width: scene === 'select' ? 70 : 150,
+    render: (_, record, __, action) => (
+      <Operation record={record} action={action} scene={scene} />
+    ),
   },
 ]

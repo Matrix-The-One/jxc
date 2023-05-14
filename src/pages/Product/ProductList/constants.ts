@@ -1,3 +1,14 @@
+export const StatusEnum = {
+  ONLINE: {
+    text: '上架',
+    color: 'green',
+  },
+  OFFLINE: {
+    text: '下架',
+    color: 'red',
+  },
+}
+
 export const CategoryEnum = {
   BLOUSE: {
     text: '上衣',
@@ -20,6 +31,14 @@ export const ColorEnum = {
     text: '黄色',
     color: 'yellow',
   },
+}
+
+export const SizeEnum = {
+  S: 'S',
+  M: 'M',
+  L: 'L',
+  XL: 'XL',
+  XXL: 'XXL',
 }
 
 export const BrandEnum = {

@@ -1,3 +1,5 @@
+import type { UseAntTableScrollAutoParams } from '@/hooks/useAntTableScrollAuto'
+
 export type ParamsType = Record<string, any>
 export type RequiredPick<T, K extends keyof T> = Required<Pick<T, K>>
 export type FilterUndefined<T> = T extends undefined ? never : T
@@ -18,6 +20,10 @@ export type IProps = Partial<{
    * @deprecated 过滤空字符串与空数组
    */
   filterNullValues: boolean
+  /**
+   * @name useAntTableScrollAuto参数
+   */
+  scrollAutoParams?: UseAntTableScrollAutoParams
 }>
 
 export type Params = ParamsType & {

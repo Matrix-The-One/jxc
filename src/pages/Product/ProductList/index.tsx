@@ -1,4 +1,5 @@
 import { Space } from 'antd'
+import type { ProTableProps } from '@ant-design/pro-components'
 import data from './_mock'
 import { generateColumns } from './columns'
 import Title from './components/Title'
@@ -9,15 +10,21 @@ const getList = async () =>
     setTimeout(() => r(data), 500)
   })
 
-const Product = () => {
-  const columns = generateColumns()
+interface ProductProps extends ProTableProps<any, any> {
+  scene?: 'select'
+}
+
+const Product: React.FC<ProductProps> = ({ scene, ...rest }) => {
+  const isSelect = scene === 'select'
+  const columns = generateColumns({ scene })
 
   return (
     <ProTable
       size='small'
       columns={columns}
       scroll={{ y: 350 }}
-      headerTitle={<Title />}
+      scrollAutoParams={{ enable: true }}
+      headerTitle={!isSelect && <Title />}
       rowSelection={{}}
       tableAlertRender={({
         selectedRowKeys,
@@ -25,6 +32,7 @@ const Product = () => {
         onCleanSelected,
       }) => {
         console.log(selectedRowKeys, selectedRows)
+
         return (
           <Space>
             <span>已选 {selectedRowKeys.length} 项</span>
@@ -35,12 +43,15 @@ const Product = () => {
       tableAlertOptionRender={() => {
         return (
           <Space>
+            <a>批量上架</a>
+            <a>批量下架</a>
             <a>批量调价</a>
             <a>批量删除</a>
           </Space>
         )
       }}
       request={getList}
+      {...rest}
     />
   )
 }

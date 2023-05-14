@@ -41,6 +41,27 @@ export default [
     ],
   },
   {
+    name: '采购管理',
+    path: '/purchase',
+    icon: 'shoppingCart',
+    routes: [
+      {
+        path: '',
+        redirect: 'inbound',
+      },
+      {
+        name: '采购入库',
+        path: 'inbound',
+        component: 'Purchase/PurchaseInbound',
+      },
+      {
+        name: '采购订货',
+        path: 'order',
+        component: 'Purchase/PurchaseOrder',
+      },
+    ],
+  },
+  {
     path: '/',
     redirect: '/workbench',
   },

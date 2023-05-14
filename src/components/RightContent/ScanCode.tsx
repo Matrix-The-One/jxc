@@ -4,6 +4,9 @@ import { Html5QrcodeScanner } from 'html5-qrcode'
 const ScanCode = () => {
   return (
     <ScanOutlined
+      // onClick={async () => {
+      //   navigator.mediaDevices.getUserMedia({ video: true })
+      // }}
       // onClick={() => {
       //   function onScanSuccess(decodedText, decodedResult) {
       //     // handle the scanned code as you like, for example:

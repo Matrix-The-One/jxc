@@ -3,6 +3,7 @@ import { ProTable as AntProTable } from '@ant-design/pro-components'
 import type { ActionType, ProTableProps } from '@ant-design/pro-components'
 import type { IProps, ParamsType, RequiredPick } from './interface'
 import { generateParams, safeGetValue } from './utils'
+import useAntTableScrollAuto from '@/hooks/useAntTableScrollAuto'
 import styles from './index.less'
 
 const defaultConvertParams = {
@@ -22,13 +23,16 @@ const ProTable = <
   actionRef,
   convertParams,
   filterNullValues = true,
+  scrollAutoParams,
   ...rest
 }: ProTableProps<DataType, Params, ValueType> &
   RequiredPick<ProTableProps<DataType, Params, ValueType>, 'request'> &
   IProps) => {
+  useAntTableScrollAuto(scrollAutoParams)
   const innerActionRef = useRef<ActionType>()
   const proActionRef =
     (actionRef as ReturnType<typeof useRef<ActionType>>) || innerActionRef
+
 
 
   return (
@@ -41,7 +45,7 @@ const ProTable = <
       search={{ span: { xs: 12, sm: 12, md: 8, lg: 6, xl: 6, xxl: 6 } }}
       form={{ ignoreRules: false, layout: 'inline', labelWidth: 'auto' }}
       editable={{ type: 'multiple' }}
-      pagination={{ defaultPageSize: 10 }}
+      pagination={{ defaultPageSize: 20 }}
       request={async (params, ...restParams) => {
         const mergeParams = { ...defaultConvertParams, ...convertParams }
         const { success, data, total } = mergeParams
