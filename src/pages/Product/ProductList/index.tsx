@@ -2,6 +2,7 @@ import { Space } from 'antd'
 import type { ProTableProps } from '@ant-design/pro-components'
 import data from './_mock'
 import { generateColumns } from './columns'
+import CreateButton from './components/CreateButton'
 import Title from './components/Title'
 import ProTable from '@/components/ProTable'
 
@@ -40,6 +41,7 @@ const Product: React.FC<ProductProps> = ({ scene, ...rest }) => {
           </Space>
         )
       }}
+      toolBarRender={() => [<CreateButton key='create' />]}
       tableAlertOptionRender={() => {
         return (
           <Space>

@@ -18,9 +18,9 @@ export default [
     component: 'Login',
   },
   {
-    name: '分析图表',
+    name: '统计分析',
     path: '/workbench',
-    icon: 'dashboard',
+    icon: 'areaChart',
     component: 'Workbench',
   },
   {
@@ -58,6 +58,74 @@ export default [
         name: '采购订货',
         path: 'order',
         component: 'Purchase/PurchaseOrder',
+      },
+    ],
+  },
+  {
+    name: '门店管理',
+    path: '/shop',
+    icon: 'shop',
+    routes: [
+      {
+        path: '',
+        redirect: 'call-in',
+      },
+      {
+        name: '门店调入',
+        path: 'call-in',
+        component: 'Shop/ShopCallIn',
+      },
+      {
+        name: '门店调出',
+        path: 'call-up',
+        component: 'Shop/ShopCallUp',
+      },
+    ],
+  },
+  {
+    name: '销售管理',
+    path: '/sale',
+    icon: 'container',
+    routes: [
+      {
+        path: '',
+        redirect: 'bill',
+      },
+      {
+        name: '销售订货',
+        path: 'order',
+        component: 'Sale/SaleOrder',
+      },
+      {
+        name: '销售开单',
+        path: 'bill',
+        component: 'Sale/SaleBill',
+      },
+    ],
+  },
+  {
+    path: '/admin',
+    name: '权限管理',
+    icon: 'crown',
+    routes: [
+      {
+        path: '',
+        redirect: 'list',
+      },
+      {
+        name: '管理员列表',
+        path: 'list',
+        component: 'Admin/List',
+      },
+      {
+        name: '角色管理',
+        path: 'role',
+        component: 'Admin/Role',
+      },
+      {
+        name: '菜单管理',
+        path: 'menu',
+        component: 'Admin/Menu',
       },
     ],
   },

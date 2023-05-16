@@ -236,6 +236,7 @@ const PurchaseInbound = () => {
           rowKey='id'
           size='small'
           columns={columns}
+          // scroll={{ x: 1200 }}
           editableFormRef={editableFormRef}
           toolBarRender={false}
           recordCreatorProps={{
