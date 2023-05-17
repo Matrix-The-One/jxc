@@ -21,10 +21,9 @@ const Product: React.FC<ProductProps> = ({ scene, ...rest }) => {
 
   return (
     <ProTable
+      scrollAuto
       size='small'
       columns={columns}
-      scroll={{ y: 350 }}
-      scrollAutoParams={{ enable: true }}
       headerTitle={!isSelect && <Title />}
       rowSelection={{}}
       tableAlertRender={({

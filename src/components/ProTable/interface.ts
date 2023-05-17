@@ -23,7 +23,7 @@ export type IProps = Partial<{
   /**
    * @name useAntTableScrollAuto参数
    */
-  scrollAutoParams?: UseAntTableScrollAutoParams
+  scrollAuto?: UseAntTableScrollAutoParams
 }>
 
 export type Params = ParamsType & {

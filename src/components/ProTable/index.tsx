@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react'
+import { useRef } from 'react'
 import { ProTable as AntProTable } from '@ant-design/pro-components'
 import type { ActionType, ProTableProps } from '@ant-design/pro-components'
 import type { IProps, ParamsType, RequiredPick } from './interface'
@@ -23,17 +23,15 @@ const ProTable = <
   actionRef,
   convertParams,
   filterNullValues = true,
-  scrollAutoParams,
+  scrollAuto,
   ...rest
 }: ProTableProps<DataType, Params, ValueType> &
   RequiredPick<ProTableProps<DataType, Params, ValueType>, 'request'> &
   IProps) => {
-  useAntTableScrollAuto(scrollAutoParams)
+  useAntTableScrollAuto(scrollAuto)
   const innerActionRef = useRef<ActionType>()
   const proActionRef =
     (actionRef as ReturnType<typeof useRef<ActionType>>) || innerActionRef
-
-
 
   return (
     <AntProTable<DataType, Params, ValueType>
@@ -42,6 +40,7 @@ const ProTable = <
       defaultSize='large'
       dateFormatter='string'
       actionRef={proActionRef}
+      scroll={scrollAuto ? { y: 0, ...rest.scroll } : rest.scroll }
       search={{ span: { xs: 12, sm: 12, md: 8, lg: 6, xl: 6, xxl: 6 } }}
       form={{ ignoreRules: false, layout: 'inline', labelWidth: 'auto' }}
       editable={{ type: 'multiple' }}

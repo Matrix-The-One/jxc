@@ -13,10 +13,9 @@ const SaleBill = () => {
 
   return (
     <ProTable
+      scrollAuto
       size='small'
       columns={columns}
-      scroll={{ y: 350 }}
-      scrollAutoParams={{ enable: true }}
       toolBarRender={() => [<CreateButton key='create' />]}
       request={getList}
     />
