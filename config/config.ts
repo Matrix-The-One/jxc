@@ -5,9 +5,11 @@ import routes from './routes'
 import { defineConfig } from '@umijs/max'
 import { join } from 'path'
 
-const { REACT_APP_ENV = 'dev' } = process.env
+const { REACT_APP_ENV = 'dev', UMI_ENV } = process.env
 
 export default defineConfig({
+  base: UMI_ENV === 'dev' ?  '/' : '/jxc',
+  publicPath: UMI_ENV === 'dev' ?  '/' : '/jxc/',
   /**
    * @name 开启 hash 模式
    * @description 让 build 之后的产物包含 hash 后缀。通常用于增量发布和避免浏览器加载缓存。

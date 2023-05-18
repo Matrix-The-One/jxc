@@ -1,17 +1,17 @@
 import { Space } from 'antd'
-import type { ProTableProps } from '@ant-design/pro-components'
 import data from './_mock'
 import { generateColumns } from './columns'
 import CreateButton from './components/CreateButton'
 import Title from './components/Title'
 import ProTable from '@/components/ProTable'
+import type { ProTableProps } from '@/components/ProTable'
 
 const getList = async () =>
   await new Promise<any>(r => {
     setTimeout(() => r(data), 500)
   })
 
-interface ProductProps extends ProTableProps<any, any> {
+interface ProductProps extends ProTableProps {
   scene?: 'select'
 }
 

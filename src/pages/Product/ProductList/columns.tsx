@@ -19,7 +19,7 @@ interface GenerateColumnsParams {
 
 export const generateColumns = ({
   scene,
-}: GenerateColumnsParams): Array<ProColumns<IList>> => [
+}: GenerateColumnsParams): Array<ProColumns<IList, any>> => [
   {
     title: '厂商',
     dataIndex: 'manufacturer',

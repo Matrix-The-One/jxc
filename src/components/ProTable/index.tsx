@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import { ProTable as AntProTable } from '@ant-design/pro-components'
-import type { ActionType, ProTableProps } from '@ant-design/pro-components'
+import type { ActionType, ProTableProps as AntProTableProps } from '@ant-design/pro-components'
 import type { IProps, ParamsType, RequiredPick } from './interface'
 import { generateParams, safeGetValue } from './utils'
 import useAntTableScrollAuto from '@/hooks/useAntTableScrollAuto'
@@ -14,6 +14,8 @@ const defaultConvertParams = {
   success: 'success',
 }
 
+export type ProTableProps = Parameters<typeof ProTable>[0]
+
 const ProTable = <
   DataType extends Record<string, any>,
   Params extends ParamsType = ParamsType,
@@ -25,9 +27,7 @@ const ProTable = <
   filterNullValues = true,
   scrollAuto,
   ...rest
-}: ProTableProps<DataType, Params, ValueType> &
-  RequiredPick<ProTableProps<DataType, Params, ValueType>, 'request'> &
-  IProps) => {
+}: AntProTableProps<DataType, Params, ValueType> & IProps) => {
   useAntTableScrollAuto(scrollAuto)
   const innerActionRef = useRef<ActionType>()
   const proActionRef =

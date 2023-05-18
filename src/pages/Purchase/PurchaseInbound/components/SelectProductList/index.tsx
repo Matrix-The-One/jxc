@@ -12,7 +12,7 @@ const SelectProductList: React.FC<SelectProductListProps> = ({
   onChange,
 }) => {
   const [open, setOpen] = useState(false)
-  const [selectProduct, setSelectProduct] = useState()
+  const [selectProduct, setSelectProduct] = useState<any>()
 
   return (
     <>
@@ -46,6 +46,7 @@ const SelectProductList: React.FC<SelectProductListProps> = ({
       >
         <ProductList
           scene='select'
+          scrollAuto={{ drawer: true }}
           rowSelection={{
             type: 'radio',
             onChange: (_, selectedRows) => setSelectProduct(selectedRows[0]),

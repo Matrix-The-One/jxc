@@ -111,7 +111,7 @@ const PurchaseInbound = () => {
       layout='horizontal'
       labelCol={{ flex: '0 1 auto' }}
       autoFocusFirstInput={false}
-      initialValues={{ p8: dayjs(), p9: dayjs().year(), p13: 10 }}
+      initialValues={{ p5: dayjs() }}
       submitter={{
         render: (_, dom) => (
           <Row justify='center' style={{ marginBlockStart: 10 }}>

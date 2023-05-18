@@ -97,7 +97,7 @@ const useAntTableScrollAuto = (params: UseAntTableScrollAutoParams = {}) => {
     const screenContainer = getScreenContainer()
     const wrapperContainer = getWrapperContainer()
     if (!screenContainer || !wrapperContainer) return
-    if (!screenContainer && drawer) modifyDrawerHeight()
+    if (screenContainer && drawer) modifyDrawerHeight()
 
     const ro = new ResizeObserver(([container]) => {
       const offsetHeight = (container.target as HTMLElement).offsetHeight
